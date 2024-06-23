@@ -27,7 +27,9 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
   padding: 0;
+  justify-content: center;
 }
 
 .lists li {

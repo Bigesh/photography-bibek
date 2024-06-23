@@ -15,11 +15,10 @@ export default function Home() {
     <Navbar/>
     <div className='image'>
         <div className='H1'>
-            <h1>Capture the moments <br />you adore!!</h1>
-            <p className='p'>The moments are beautiful to enjoy while taking a sip of tea</p>
-          
+          <h1>Capture the moments <br />you adore!!</h1>
+          <p className='p'>The moments are beautiful to enjoy while taking a sip of tea</p>
         </div>
-        </div>
+    </div>
         <div className='social'>
             <ul>
               <a href="https://www.instagram.com/freezy_heir/">

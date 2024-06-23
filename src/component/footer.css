@@ -21,14 +21,13 @@
 
 .left-content h3 {
     /* border: 1px solid blue; */
-    padding-left: 180px;
     /* margin-left: 80px; */
     /* margin: 0 0 10px 0; */
     font-size: 1.5em;
 }
 
 .left-content p {
-    
+    text-align: left;
     margin-top:20px;
     line-height: 1.6;
 }

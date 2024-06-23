@@ -79,16 +79,25 @@ import { ProductsContext } from '../global/ProductsContext';
 import { useCart } from '../global/CartContext'; // Import useCart hook
 import './Shop.css';
 import { Navbar } from './Navbar';
+import { useAuth } from '../global/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Products = () => {
   const { products } = useContext(ProductsContext);
   const { dispatch } = useCart(); // Get dispatch function from CartContext
+  const { user} = useAuth();
+  const navigate = useNavigate();
 
   console.log(products);
 
   const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', product });
+    if(user){
+      dispatch({ type: 'ADD_TO_CART', product });
+    }
+    else{
+      navigate('/signin');
+    }
   };
 
   return (

@@ -1,3 +1,33 @@
 body{
     background-color: black;
+    
 }
+*{
+    box-sizing: border-box;
+}
+h1{
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    padding-left: 11.8%;
+    padding-right: 11.8%;
+  }
+  @media (max-width: 1440px) {
+    .wrapper {
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .wrapper {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .wrapper {
+      padding-left: 3.5%;
+      padding-right: 3.5%;
+    }
+  }

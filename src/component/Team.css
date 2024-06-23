@@ -18,6 +18,8 @@
     padding: 30px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px 15px;
   }
   
   .Image-wrapper img {
@@ -27,8 +29,12 @@
   .image-hover-main {
     border-radius: 50%;
     position: relative;
-    height: 300px;
+    height: auto;
     width: 300px;
+  }
+
+  .imagebox{
+    position: relative;
   }
   
   .overlay {

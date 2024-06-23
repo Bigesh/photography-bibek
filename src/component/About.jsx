@@ -10,7 +10,7 @@ export default function About() {
   };
 
   return (
-    <div className='main' id='aboutus'>
+    <div className='main wrapper' id='aboutus'>
       <h1>About Us</h1>
       <div className='About-lists'>
         <div className='button-wrapper'>

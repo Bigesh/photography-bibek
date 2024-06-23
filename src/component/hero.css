@@ -46,6 +46,13 @@
     align-items: flex-end; 
     height: 40%;
 }
+@media(max-width:581px){
+    .social {
+        bottom: 0px;
+        transform: translateY(20vh);
+    }
+}
+
 
 .social ul {
     margin-right:10px;
