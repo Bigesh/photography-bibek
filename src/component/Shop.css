@@ -1,0 +1,100 @@
+/* Products.css */
+.shop-container{
+  margin-top: 120px;
+}
+body {
+  margin-top: 100px;
+  font-family: Arial, sans-serif; /* Standard web-safe font */
+  background-color: #f5f5f5; /* Light grey background for the whole page */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  
+  text-align: center;
+  color:white;
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.products-container {
+  
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color:black; /* White background for the container */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.product-card {
+  background-color: #fff; /* White background for each card */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 220px; /* Fixed width for cards */
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transform and shadow transition on hover */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.product-img img {
+  width: 100%; /* Full width image */
+  height: 220px; /* Fixed height for image */
+  object-fit: cover; /* Cover mode to keep aspect ratio */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.product-name {
+  font-size: 1.1em; /* Slightly larger font size */
+  margin: 10px 0; /* Margin around the name */
+  font-weight: bold; /* Bold font for product name */
+  color: #333; /* Dark grey color */
+}
+
+.product-price {
+  font-size: 1em; /* Normal font size */
+  color: #555; /* Medium grey color */
+  margin-bottom: 10px; /* Bottom margin */
+}
+
+.addcart-btn {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Slightly rounded corners */
+  padding: 10px 20px; /* Padding around the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin-bottom: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.addcart-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+  .products-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .product-card {
+      width: 90%; /* Full width on smaller screens */
+      margin-bottom: 20px;
+  }
+}

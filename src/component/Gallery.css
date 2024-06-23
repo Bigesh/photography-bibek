@@ -1,0 +1,172 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.Heading {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+  margin-top: 80px;
+}
+
+.lists {
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.lists ul {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.lists li {
+  font-size: 20px;
+  position: relative;
+}
+
+.lists li:hover,
+.lists li.active {
+  color: #D4AF37;
+}
+
+.lists li:hover::after,
+.lists li.active::after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  background-color: #D4AF37;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.main-container-gallery {
+  padding: 20px;
+  margin-top: 80px;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -5px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 5px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > .image-container {
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.image-container img {
+  width: 100%; /* Ensure image takes the full width of the container */
+  display: block;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+.image-container.large-image {
+  grid-row: span 2;
+}
+
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  max-width: 70vw;
+  max-height: 70vh;
+  /* Remove background color */
+}
+
+.modal-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 10px;
+  background-color: transparent; /* Add background color as transparent */
+}
+
+.modal-content img:hover {
+  transform: scale(1.05);
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: rgb(77, 69, 232);
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Mobile view */
+@media only screen and (max-width: 480px) {
+  .my-masonry-grid {
+    display: block;
+  }
+
+  .main-container-gallery {
+    padding: 10px;
+  }
+}
+
+/* Tablet view */
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  .main-container-gallery {
+    padding: 15px;
+  }
+
+  .my-masonry-grid {
+    display: flex;
+  }
+}
