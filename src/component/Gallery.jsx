@@ -78,7 +78,7 @@ function Gallery() {
 
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
+          className="my-masonry-grid wrapper"
           columnClassName="my-masonry-grid_column"
         >
           {filteredImages.map((image, index) => (

@@ -94,8 +94,14 @@
     .footer-wrapper {
         flex-direction: column;
         align-items: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        gap: 35px;
     }
 
+    .footer-wrapper *{
+        text-align: center !important;
+    }
     .contacts, .left-content {
         align-items: center;
         padding: 0;

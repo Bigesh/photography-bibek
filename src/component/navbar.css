@@ -9,6 +9,9 @@
     background-color: #333;
     justify-content: space-between;   
     left: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
   }
   .logo{
      border: 1px solid red;
@@ -23,13 +26,18 @@
     align-items: center;
     width: auto;
   }
+  .main-nav-content{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
   .navbar-list a{
     color: #fff;text-decoration: none;
   }
  
   .cart-icon{
     margin-right: 10px;
-    margin-left: 15px;
+    margin-left: 10px;
   }
 
   
@@ -42,11 +50,20 @@
     background-color: transparent;
     display: none;
   }
-
-  .hamBurger:focus{
-    background-color:none;
+  .hamBurger:hover {
+   background-color: transparent;
+   }
+  .hamBurger:hover span::after{
+    transform: rotate(90deg);
   }
 
+  .hamBurger:hover span::before{
+    transform: rotate(-45deg);
+    opacity: 0;
+  }
+  .hamBurger:hover span{
+    transform: rotate(-45deg);
+   }
 
   @media(max-width:768px){
     .hamBurger{
@@ -77,6 +94,7 @@
    background-color: #fff;
    left: 0px;
    border-radius: 100%;
+   transition: 0.3s ease-in-out;
   }
 
   
@@ -90,6 +108,29 @@
     left: 0px;
     top: 0px;
     border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+   }
+
+   .cartIconWrapper{
+    position: relative;
+   }
+   
+   .cartIconWrapper span{
+    position: absolute;
+    top: 0px;
+    background-color:#F70125;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    min-width: 15px;
+    right: 0px;
+    transform: translateY(-50%);
    }
 
    .hamBurger span::before{
@@ -102,4 +143,61 @@
     left: 0px;
     top: 0px;
     border-radius: 100%;
+    transition: all 0.3s ease-in-out;
    }
+
+
+   .userProfile{
+    border-radius:50px;
+padding: 8px 10px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+color: #fff;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+font-family: inherit;
+display: flex;
+align-items: center;
+background-color: #333333;
+gap: 8px;
+transition: all 0.3s ease-in-out;
+cursor: pointer;
+   }
+
+   .userProfile .cicon{
+    color: #14181F;
+    padding: 6px;
+    background-color: #FFC100;
+    border-radius: 50%;
+    font-size: 30px;
+   }
+
+
+  .dropdown{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px;
+    padding: 0px;
+    z-index: 1;
+    height: 0px;
+    top: 100%;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    right: 0px;
+  }
+
+  .dropdown-content .userProfile:hover{
+    color: #333333;
+    background-color: #fff;
+    
+ }
+
+  
+  .userProfile:hover .dropdown-content {
+    height: auto;
+  }

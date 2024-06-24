@@ -24,11 +24,13 @@
     top: 300px; 
 }
 
+
 .H1 h1 {
     /* margin-top: 80px; */
     font-size: 36px; 
     color: white;
     margin: 0;
+    margin-bottom: 30px;
 }
 
 .p {
@@ -50,6 +52,13 @@
     .social {
         bottom: 0px;
         transform: translateY(20vh);
+    }
+    .H1{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        padding: 20px;
     }
 }
 
