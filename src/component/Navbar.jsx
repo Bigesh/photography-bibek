@@ -34,6 +34,7 @@ export const Navbar = () => {
           <a href="#footer">Contact Us</a>
           <Link to="/shop">Shop</Link>
           <Link to="/booking">Booking</Link>
+          {user?.email==="bigeshadmin@gmail.com" ? ( <Link to="/customers">Customer Bookings</Link>):null}
           <Link to="/cart">
             <div className="cartIconWrapper">
               <FaCartShopping className="cart-icon" />

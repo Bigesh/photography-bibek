@@ -11,7 +11,11 @@ import Products from './component/Products';
 import Cart from './component/Cart';
 import AddProduct from './component/AddProduct';
 import OrderSuccess from './component/OrderSuccess'; // Import OrderSuccess component
-
+import Booking from './component/Booking';
+import Navbar from './component/Navbar';
+import CustomerBookings from './component/CustomerBookings';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -20,6 +24,8 @@ function App() {
       <CartContextProvider>
         <AuthContextProvider> {/* Wrap with AuthContextProvider */}
           <BrowserRouter>
+          <ToastContainer />
+            <Navbar></Navbar>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/signin" element={<Login />} />
@@ -28,6 +34,8 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/addproduct" element={<AddProduct />} />
               <Route path="/order-success" element={<OrderSuccess />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/customers" element={<CustomerBookings />} />
             </Routes>
           </BrowserRouter>
         </AuthContextProvider>

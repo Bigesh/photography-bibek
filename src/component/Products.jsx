@@ -102,7 +102,6 @@ const Products = () => {
 
   return (
     <>
-    <Navbar/>
    <div className='shop-container'>
       {products.length !== 0 && <h1>Products</h1>}
       <div className='products-container'>

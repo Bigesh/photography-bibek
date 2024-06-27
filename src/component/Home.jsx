@@ -12,7 +12,6 @@ import Team from './team';
 export default function Home() {
   return (
     <>
-    <Navbar/>
     <div className='image'>
         <div className='H1'>
           <h1>Capture the moments <br />you adore!!</h1>

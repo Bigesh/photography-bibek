@@ -75,7 +75,6 @@ export default function CreateAccount() {
 
   return (
     <>
-      <Navbar />
       <div className="auth-wrapper">
         <h2>Create Account</h2>
         {error && <p className="error">{error}</p>}

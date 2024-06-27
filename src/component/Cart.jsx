@@ -181,8 +181,7 @@
 //               <span>Subtotal</span>
 //               <span>Rs {grandTotal}.00</span>
 //             </div>
-            
-           
+
 //             <div>
 //               <strong>Total</strong>
 //               <strong>Rs {total}.00</strong>
@@ -191,7 +190,7 @@
 //           <div className='cart-buttons'>
 //             <button className='clear-button' onClick={clearCart}>Clear Cart</button>
 //             <button className='checkout-button' onClick={() => alert('Proceed to checkout')}>Checkout</button>
-            
+
 //           </div>
 //         </>
 //       )}
@@ -419,9 +418,9 @@
 //   };
 
 //   return (
-    
+
 //     <div className='cart-container'>
-      
+
 //       <div className='cart-details'>
 //         <h2 className='cart-header'>Shopping Cart</h2>
 //         {cart.length === 0 ? (
@@ -458,67 +457,141 @@
 
 // export default Cart;
 
-
-import React from 'react';
-import { useCart } from '../global/CartContext';
-import './Cart.css';
-import { Navbar } from './Navbar';
+import React, { useState } from "react";
+import { useCart } from "../global/CartContext";
+import "./Cart.css";
+import { Navbar } from "./Navbar";
+import { toast } from "react-toastify";
+import { storage } from "../Config/firebaseConfig";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import firebase from "firebase/compat/app";
 
 const Cart = () => {
-  const { cart, dispatch } = useCart();
-
+  const { cart, dispatch, saveyourcart, savedCart } = useCart();
+  
+  const [ischekingout, setIscheckingOut] = useState(false);
   const removeFromCart = (id) => {
-    dispatch({ type: 'REMOVE_FROM_CART', id });
+    dispatch({ type: "REMOVE_FROM_CART", id });
   };
 
   const clearCart = () => {
-    dispatch({ type: 'CLEAR_CART' });
+    dispatch({ type: "CLEAR_CART" });
   };
 
   const calculateTotal = () => {
-    return cart.reduce((acc, item) => acc + item.ProductPrice * item.qty, 0).toFixed(2);
+    return cart
+      .reduce((acc, item) => acc + item.ProductPrice * item.qty, 0)
+      .toFixed(2);
   };
 
+  function checkoutHandler() {
+    setIscheckingOut(true);
+    setTimeout(() => {
+      toast.success("thankyou for purchasing");
+      saveyourcart(cart);
+      clearCart();
+      setIscheckingOut(false);
+    }, 1500);
+  }
+
+  const extractPathFromUrl = (url) => {
+    const urlObject = new URL(url);
+    const path = decodeURIComponent(urlObject.pathname.split('/o/')[1]);
+    return path;
+  };
+
+  const downloadImage = (item) => {
+    const downloadURL = item?.ProductImg;
+    const storage = getStorage();
+    getDownloadURL(ref(storage,extractPathFromUrl(item.ProductImg)))
+      .then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
+
+    // This can be downloaded directly:
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = (event) => {
+      const blob = xhr.response;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+
+    // Or inserted into an <img> element
+    const img = document.getElementById('myimg');
+    img.setAttribute('src', url);
+  })
+  .catch((error) => {
+    // Handle any errors
+  });
+   
+  };
+
+
+
   return (
-    <div className='cart-container'>
-      <Navbar />
-      <div className='cart-details'>
-        <h2 className='cart-header'>Shopping Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <>
-            {cart.map(item => (
-              <div className='cart-item' key={item.ProductID}>
-                <img src={item.ProductImg} alt="Product" />
-                <div className='cart-item-details'>
-                  <div className='cart-item-name'>{item.ProductName}</div>
-                  <div className='cart-item-quantity'>Quantity: {item.qty}</div>
+    <>
+      <div className="cart-container">
+        <div className="cart-details">
+          <h2 className="cart-header">Shopping Cart</h2>
+          {cart.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            <>
+              {cart.map((item) => (
+                <div className="cart-item" key={item.ProductID}>
+                  <img src={item.ProductImg} alt="Product" />
+                  <div className="cart-item-details">
+                    <div className="cart-item-name">{item.ProductName}</div>
+                    <div className="cart-item-quantity">
+                      Quantity: {item.qty}
+                    </div>
+                  </div>
+                  <div className="cart-item-price">
+                    Rs {(item.ProductPrice * item.qty).toFixed(2)}
+                  </div>
+                  <button onClick={() => removeFromCart(item.ProductID)}>
+                    Remove
+                  </button>
                 </div>
-                <div className='cart-item-price'>Rs {(item.ProductPrice * item.qty).toFixed(2)}</div>
-                <button onClick={() => removeFromCart(item.ProductID)}>Remove</button>
+              ))}
+              <div className="cart-buttons">
+                <button onClick={clearCart}>Clear Cart</button>
               </div>
-            ))}
-            <div className='cart-buttons'>
-              <button onClick={clearCart}>Clear Cart</button>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
+        <div className="cart-summary">
+          <h3>Summary</h3>
+          <p>
+            Subtotal: <span>Rs {calculateTotal()}</span>
+          </p>
+          <p className="total">
+            Total: <span>Rs {calculateTotal()}</span>
+          </p>
+          <button className="checkout-button" onClick={() => checkoutHandler()}>
+            {ischekingout ? "checking out ..." : "Checkout"}
+          </button>
+        </div>
       </div>
-      <div className='cart-summary'>
-        <h3>Summary</h3>
-        <p>Subtotal: <span>Rs {calculateTotal()}</span></p>
-        <p className='total'>Total: <span>Rs {calculateTotal()}</span></p>
-        <button className='checkout-button'>Checkout</button>
-      </div>
-    </div>
+      {savedCart?.length > 0 && (
+        <div className="purchases">
+          <h3 className="text-orange">Download your Purchases</h3>
+          <div className="downloadsPanel wrapper">
+          
+            {savedCart.map((item,index) => {
+              return( <div className="downloadsPanel__card" key={index}>
+                <img src={item?.ProductImg} alt="" />
+                <h3>{item?.ProductName}</h3>
+                <p>Price:<span>Rs.{item.ProductPrice}</span></p>
+                <p>Quantity : <span>{item.qty}</span></p>
+                <button className="submitBtn" onClick={()=>downloadImage(item)}>Download</button>
+              </div>);
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
 export default Cart;
-
-
-
-
-
-

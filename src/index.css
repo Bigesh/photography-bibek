@@ -4,6 +4,7 @@ body{
 }
 *{
     box-sizing: border-box;
+    font-family: "Inter", sans-serif !important;
 }
 h1{
     margin-bottom: 20px;
@@ -34,4 +35,8 @@ h1{
 
   a{
     text-decoration: none;
+  }
+
+  button.Toastify__close-button{
+    width: auto;
   }

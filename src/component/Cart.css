@@ -150,3 +150,68 @@
 .checkout-button:hover {
   background-color: #218838;
 }
+
+
+
+.downloadsPanel{
+
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.downloadsPanel__card{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 17px;
+  padding: 14px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+.downloadsPanel__card img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  border-radius: 3px;
+}
+
+.downloadsPanel__card h3{
+font-size: 18px;
+text-transform: capitalize;
+color: #FFC100;
+}
+
+.downloadsPanel__card p{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.downloadsPanel__card .submitBtn{
+  text-align: center;
+}
+
+.downloadsPanel__card p span{
+  font-weight: 400;
+  color: #fff;
+}
+
+
+.downloadsPanel__card *{
+  margin: 0px;
+  text-align: left;
+}
+.purchases{
+  margin: 80px 0px;
+}
+.purchases>h3{
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 35px;
+
+}
