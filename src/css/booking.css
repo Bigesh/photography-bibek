@@ -8,6 +8,12 @@
   padding: 32px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+@media (max-width: 768px) {
+  .bookingForm {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .bookingForm h2 {
   color: #007bff;
   font-size: 28px;
